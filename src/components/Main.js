@@ -1,11 +1,11 @@
 import React, {Component} from "react";
-import styles from "./MyStyle.module.css"
+import StyledBox from "./StyledComponents"
 
 class Main extends Component{
     render(){
-        return (<div id={styles.main}>
+        return (<StyledBox bgColor="#e06666" display="inline-block" verticalAlign="top">
             {this.props.children}
-        </div>
+        </StyledBox>
         );
     }
 }
