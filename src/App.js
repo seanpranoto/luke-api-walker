@@ -1,13 +1,22 @@
 import React from 'react';
 import './App.css';
-import MyComponent from "./components/MyComponents"
+import Navigation from "./components/Navigation";
+import Main from "./components/Main";
+import Subcontent from "./components/Subcontent";
+import Advertisement from "./components/Advertisement";
+import Header from "./components/Header";
 
 function App() {
   return (
     <div className="App">
-      <MyComponent firstName={"Jane"} lastName={"Doe"} age={45} color={"blonde"}/>
-      <MyComponent firstName={"Pranoto"} lastName={"Sean"} age={21} color={"back"}/>
-      <MyComponent firstName={"DB"} lastName={"Mongo"} age={22} color={"red"}/>
+      <Header />
+      <Navigation />
+      <Main>
+        <Subcontent />
+        <Subcontent />
+        <Subcontent />
+        <Advertisement />
+      </Main>
     </div>
   );
 }
