@@ -6,17 +6,17 @@ import Form from "./components/Form";
 
 function App() {
   const [state, setState]=useState({
-    firstName:"",
+    firstName:"", 
     lastName:"",
     email:"",
     password:"",
-    confrimPassword:""
+    confirmPassword:""
   });
   return(
-    <>
-    <Form state={state} setState={setState}/>
-    <Value state={state}/>
-    </>
+    <div>
+    <Form input={state} setInput={setState}/>
+    <Value data={state}/>
+    </div>
   );
 }
 
