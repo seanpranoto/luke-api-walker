@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
 import './App.css';
-import Value from "./components/Value";
 import Form from "./components/Form";
+import StyledBox from "./components/Value";
 
 
 function App() {
-  const [state, setState]=useState({
-    firstName:"", 
-    lastName:"",
-    email:"",
-    password:"",
-    confirmPassword:""
+  const [state, setState] = useState({
+    array: []
   });
-  return(
-    <div>
-    <Form input={state} setInput={setState}/>
-    <Value data={state}/>
+  return (
+    <div className="App">
+      <Form state={state} setState={setState} />
+      {
+        state.array.map(color => <StyledBox bgcolor={color} />)
+      }
     </div>
   );
 }

@@ -1,16 +1,12 @@
-import React from "react";
+import styled from "styled-components";
 
-const Value = (props) => {
-    const {firstName, lastName, email, password, confirmPassword}=props.data;
-return(
-    <div>
-        <p>First Name: {firstName}</p>
-        <p>Last Name: {lastName}</p>
-        <p>Email: {email}</p>
-        <p>Password: {password}</p>
-        <p>Confirm Password: {confirmPassword}</p>
-    </div>
-)
-}
+const StyledBox = styled.div`
+background-color: ${props => props.bgcolor};
+width: 200px;
+height: 200px;
+margin : 15px 15px;
+display: inline-block;
+`;
 
-export default Value;
+
+export default StyledBox;
