@@ -1,12 +1,12 @@
-import styled from "styled-components";
+import React from "react";
 
-const StyledBox = styled.div`
-background-color: ${props => props.bgcolor};
-width: 200px;
-height: 200px;
-margin : 15px 15px;
-display: inline-block;
-`;
+const Content = ({state}) => {
+    const style={
+        margin: "15px 50px",
+    }
+    return(
+        <div style={style}>{state}</div>
+    )
+}
 
-
-export default StyledBox;
+export default Content;

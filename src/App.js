@@ -1,19 +1,15 @@
 import React, { useState } from 'react';
 import './App.css';
-import Form from "./components/Form";
-import StyledBox from "./components/Value";
+import Tabs from "./components/Form";
+import Content from "./components/Value";
 
 
 function App() {
-  const [state, setState] = useState({
-    array: []
-  });
+  const [state, setState] = useState();
   return (
-    <div className="App">
-      <Form state={state} setState={setState} />
-      {
-        state.array.map(color => <StyledBox bgcolor={color} />)
-      }
+    <div>
+      <Tabs setState={setState} />
+      <Content state={state} />
     </div>
   );
 }

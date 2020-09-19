@@ -1,23 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Form = ({ state, setState }) => {
-    const [color, setColor] = useState("");
-    const onChange = (e) => setColor(e.target.value);
-    const onSubmit = (e) => {
-        e.preventDefault();
-        setState({
-            ...state,
-            array: [...state.array, color]
-        });
-        setColor("");
+const Tabs = (props) => {
+    const { setState}=props;
+
+    const buttonStyle={
+        display: "inlineBlock",
+        marginLeft: "50px",
+        width: "150px",
     }
+    const onClick=(e)=>{
+        if(e.target.name==="tab1"){
+            setState(<p>Tab 1 content is showing here</p>)
+        }else if(e.target.name==="tab2"){
+            setState(<p>Tab 2 content is showing here</p>)
+        }else{
+            setState(<p>Tab 3 content is showing here</p>)
+        }
+    }
+    
     return (
-        <form onSubmit={onSubmit}>
-            <input type="text" name="color" onChange={onChange} value={color} placeholder="Color" />
-            <button>Submit</button>
-        </form>
+        <div>
+            <button style={buttonStyle} name="tab1" onClick={onClick}>Tab 1</button>
+            <button style={buttonStyle} name="tab2" onClick={onClick}>Tab 2</button>
+            <button style={buttonStyle} name="tab3" onClick={onClick}>Tab 3</button>
+        </div>
     );
 }
 
 
-export default Form;
+export default Tabs;
