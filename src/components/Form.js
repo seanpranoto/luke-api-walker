@@ -1,31 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Tabs = (props) => {
-    const { setState}=props;
+const Form = (props) => {
+    const { tasks, setTasks } = props;
+    const [list, setList] = useState({
+        name: "",
+        isComplete: false,
+        nameStyle:{}
+    });
 
-    const buttonStyle={
-        display: "inlineBlock",
-        marginLeft: "50px",
-        width: "150px",
+    const onSubmit = (e) => {
+        // Prevent default behaviour
+        e.preventDefault();
+        //Giving a value to the state in app.js
+        setTasks([...tasks, list]);
+        // Reset the input value
+        setList({...list, name:""});
+
     }
-    const onClick=(e)=>{
-        if(e.target.name==="tab1"){
-            setState(<p>Tab 1 content is showing here</p>)
-        }else if(e.target.name==="tab2"){
-            setState(<p>Tab 2 content is showing here</p>)
-        }else{
-            setState(<p>Tab 3 content is showing here</p>)
-        }
+
+    const onChange = (e) => setList({ ...list, name: e.target.value });
+
+
+    const addButtonStyle = {
+        width: "100px",
     }
-    
+
     return (
-        <div>
-            <button style={buttonStyle} name="tab1" onClick={onClick}>Tab 1</button>
-            <button style={buttonStyle} name="tab2" onClick={onClick}>Tab 2</button>
-            <button style={buttonStyle} name="tab3" onClick={onClick}>Tab 3</button>
-        </div>
+        <form className="container" onSubmit={onSubmit} >
+            <input type="text" onChange={onChange} value={list.name} />
+            <button className="btn btn-primary btn-block" style={addButtonStyle}>Add</button>
+        </form>
     );
 }
 
 
-export default Tabs;
+export default Form;

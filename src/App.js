@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import './App.css';
-import Tabs from "./components/Form";
+import Form from "./components/Form";
 import Content from "./components/Value";
 
 
 function App() {
-  const [state, setState] = useState();
+  const [tasks, setTasks] = useState([]);
   return (
     <div>
-      <Tabs setState={setState} />
-      <Content state={state} />
+      {
+        tasks.map((task, i) => <Content task={task} setTasks={setTasks} i={i} tasks={tasks} />)
+      }
+      <Form tasks={tasks} setTasks={setTasks} />
     </div>
   );
 }
