@@ -8,7 +8,7 @@ function App() {
   const [pokemons , setPokemons] = useState([]);
   return (
     <div >
-      <Form setPokemons={setPokemons}/>\
+      <Form setPokemons={setPokemons}/>
       <Content pokemons={pokemons}/>
     </div>
   );
