@@ -5,13 +5,11 @@ import Content from "./components/Value";
 
 
 function App() {
-  const [tasks, setTasks] = useState([]);
+  const [pokemons , setPokemons] = useState([]);
   return (
-    <div>
-      {
-        tasks.map((task, i) => <Content task={task} setTasks={setTasks} i={i} tasks={tasks} />)
-      }
-      <Form tasks={tasks} setTasks={setTasks} />
+    <div >
+      <Form setPokemons={setPokemons}/>\
+      <Content pokemons={pokemons}/>
     </div>
   );
 }
