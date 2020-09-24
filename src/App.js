@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
-import Form from "./components/Form";
-import Content from "./components/Value";
+import FormWrapper from "./components/FormWrapper";
+import Wrapper from "./components/Wrapper";
+import Navbar from "./components/Navbar";
+
 
 
 function App() {
-  const [pokemons , setPokemons] = useState([]);
   return (
-    <div >
-      <Form setPokemons={setPokemons}/>
-      <Content pokemons={pokemons}/>
-    </div>
+      <Wrapper>
+        <Navbar />
+        <FormWrapper />
+      </Wrapper>
   );
 }
 

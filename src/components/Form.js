@@ -1,21 +1,22 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, {useContext} from "react";
+import Contextobject from "./ContextObject";
 
-const Form = ({setPokemons}) => {
 
-    const [data, setData]=useState(null);
-
-    useEffect(() => {
-        axios.get("https://pokeapi.co/api/v2/pokemon?limit=807&offset=0")
-            .then(response => setData(response.data.results))
-            .catch(err=>console.log(err))
-    }, []);
-
-    const onClick=()=> setPokemons(data);
-    
+const Form = () => {
+    const {setState} =useContext(Contextobject);
+    const onChange=(e)=> setState(e.target.value);
+    const labelStyle={
+        marginRight: "10px",
+        fontSize: "25px"
+    }
+    const inputStyle={
+        backgroundColor: "#efefef",
+        borderRadius: "7px"
+    }
     return (
         <div>
-            <button onClick={onClick} >Fetch Pokemon</button>
+            <label style={labelStyle } htmlFor="name"> <b> Your name: </b></label>
+            <input style={inputStyle} type="text" name="name" onChange={onChange}/>
         </div>
     )
 }
