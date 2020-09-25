@@ -1,17 +1,18 @@
 import React from 'react';
 import './App.css';
-import FormWrapper from "./components/FormWrapper";
-import Wrapper from "./components/Wrapper";
-import Navbar from "./components/Navbar";
-
+import { Router } from "@reach/router";
+import Home from "./components/Home";
 
 
 function App() {
   return (
-      <Wrapper>
-        <Navbar />
-        <FormWrapper />
-      </Wrapper>
+    <div className="container">
+      <Router>
+        <Home path="/home" />
+        <Home path="/:item" />
+        <Home path="/:item/:color/:bgColor" />
+      </Router>
+    </div>
   );
 }
 
