@@ -1,17 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { navigate } from "@reach/router";
 
 
-const Home = ({ item, color, bgColor }) => {
-    console.log({ item });
-    if (!item) {
-        return (<h1>Welcome</h1>);
-    } else {
-        if (isNaN(item)) {
-            return (<h1 style={color ? { color: color, backgroundColor: bgColor } : null}>The word is: {item}</h1>)
-        } else {
-            return (<h1>The number is: {item}</h1>)
-        }
+const Home = ({ search, id, }) => {
+    const [content, setContent] = useState({});
+    useEffect(() => {
+        axios
+            .get(`https://swapi.dev/api/${search}/${id}`)
+            .then(res => {
+                console.log(res);
+                setContent(res.data);
+            })
+            .catch(err => navigate("/obiwan"))
+    }, [search, id]);
+    if (search === "planets") {
+        return (
+            <>
+                <h1>{content.name}</h1>
+                <p>Climate: {content.climate}</p>
+                <p>Diameter: {content.diameter}</p>
+                <p>Orbital period: {content.orbital_period}</p>
+                <p>Terrain: {content.terrain}</p>
+            </>
+        )
     }
+    else if (search === "starships") {
+        return (
+            <>
+                <h1>{content.name}</h1>
+                <p>Manufacturer: {content.manufacturer}</p>
+                <p>Crew: {content.crew}</p>
+                <p>Length: {content.length}</p>
+                <p>Passengers: {content.passengers}</p>
+            </>
+        )
+    }
+
+
 }
 
 
